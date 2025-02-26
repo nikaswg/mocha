@@ -15,7 +15,7 @@ double f(double x, double y) {
 void euler(double x0, double y0) {
     printf("Метод Эйлера:\n");
     printf("x\t\t y\n");
-    for (double x = x0; x <= B; x += H) {
+    for (double x = x0; x <= B + H; x += H) { // Изменено условие
         printf("%.4f\t %.4f\n", x, y0);
         y0 += H * f(x, y0);
     }
@@ -25,7 +25,7 @@ void euler(double x0, double y0) {
 void euler_koshi(double x0, double y0) {
     printf("\nМодифицированный метод Эйлера-Коши:\n");
     printf("x\t\t y\n");
-    for (double x = x0; x <= B; x += H) {
+    for (double x = x0; x <= B + H; x += H) { // Изменено условие
         printf("%.4f\t %.4f\n", x, y0);
         double y_temp = y0 + H * f(x, y0);
         y0 += H * (f(x, y0) + f(x + H, y_temp)) / 2.0;
@@ -36,11 +36,11 @@ void euler_koshi(double x0, double y0) {
 void euler_iter(double x0, double y0) {
     printf("\nМетод Эйлера с итерационным уточнением:\n");
     printf("x\t\t y\n");
-    for (double x = x0; x <= B; x += H) {
+    for (double x = x0; x <= B + H; x += H) { // Изменено условие
         printf("%.4f\t %.4f\n", x, y0);
         double y_temp = y0 + H * f(x, y0);
         // Итерационное уточнение
-        for (int i = 0; i < 5; i++) { // 5 итераций
+        ййЙfor (int i = 0; i < 5; i++) { // 5 итераций
             y_temp = y0 + H * f(x + H, y_temp);
         }
         y0 = y_temp;
